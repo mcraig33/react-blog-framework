@@ -11,6 +11,10 @@ class NewPost extends Component {
         submitted: false
     }
 
+    componentDidMount () {
+        //if unauth => this.props.history.replace('/posts');
+    }
+
     postDataHandler = () => {
         const data = {
             title: this.state.title,
@@ -20,7 +24,8 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
-                this.setState({submitted: true})
+                this.props.history.push('/posts');
+                //this.setState({submitted: true})
             });
     }
 
